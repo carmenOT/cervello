@@ -12,18 +12,20 @@ Covid-19 pandEmic impacts on mental health Related conditions Via multi-database
 - Study end date: **March 2021**
 - Protocol: **[Word Doc](https://github.com/carmenOT/cervello/blob/main/documents/OHDSI%20Protocol%20COVID%20mental%20health%20V1.4.docx)**
 
-**Objectives:**
+Objectives:
+=================
 
+### Primary analyses: 
 Describe the baseline demographic, clinical characteristics, treatments and outcomes of interest among individuals with mental health conditions during the COVID-19 pandemic overall and stratified by sex, age, race and specific comorbidities.
 
 ### FAQ
 
-#### *What do I need to do to run the package?*
+##### *What do I need to do to run the package?*
 OHDSI study  repos are designed to have information in the README.md (where you are now) to provide you with instructions on how to navigate the repo. This package has two major components:
 1. [CohortDiagnostics](http://www.github.com/ohdsi/cohortDiagnostics) - an OHDSI R package used to perform diagnostics around the fitness of use of the study phenotypes on your CDM. By running this package you will allow study leads to understand: cohort inclusion rule attrition, inspect source code lists for a phenotype, find orphan codes that should be in a particular concept set but are not, compute incidnece across calendar years, age and gender, break down index events into specific concepts that triggered then, compute overlap of two cohorts and compute basic characteristics of selected cohorts. This package will be requested of all sites. It is run on all available data. This allows us to understand how the study phenotypes perform in your database and identify any potential gaps in the phenotype definitions.
 2. RunStudy - the characterization package to evaluate Target-Stratum-Feature pairings computing cohort characteristics and creating tables/visualizations to summarize differences between groups.
 
-#### *I don't understand the organization of this Github Repo.*
+##### *I don't understand the organization of this Github Repo.*
 The study repo has the following major pieces:
 - `R` folder = the folder which will provide the R library the scripts it needs to execute this study
 - `documents` folder = the folder where you will find study documents (protocols, 1-sliders to explain the study, etc)
@@ -32,20 +34,20 @@ The study repo has the following major pieces:
 
 Below you will find instructions for how to bring this package into your `R`/ `RStudio` environment. Note that if you are not able to connect to the internet in `R`/ `RStudio` to download pacakges, you will have to pull the [TAR file](https://github.com/carmenOT/cervello/archive/master.zip). 
 
-#### *What should I do if I get an error when I run the package?*
+##### *What should I do if I get an error when I run the package?*
 If you have any issues running the package, please report bugs / roadblocks via [GitHub Issues](https://github.com/ohdsi-studies/Covid19CharacterizationCharybdis/issues) on this repo. Where possible, we ask you share error logs and snippets of warning messages that come up in your `R` console. You may also attach screenshots. Please include the RDMBS (aka your SQL dialect) you work on. If possible, run `traceback()` in your `R` and paste this into your error as well. The study leads will triage these errors with you.
 
-#### *What should I do when I finish?*
+##### *What should I do when I finish?*
 If you finish running a study package, send the file ```diagnosticsExport/Results_<DatabaseId>.zip``` in the output folder to the study coordinator [Carmen O. Torre](mailto:carmenolga.torre@iqvia.com). The study team will be in touch within 24 hours to acknowledge receipt of your results and review results. If there are no issues, the results will be pushed to the RShiny app. If any errors occur in this process, the study lead will communicate with you and work to resolve this.
 
-## Package Requirements
+### Package Requirements
 - A database in [Common Data Model version 5](https://github.com/OHDSI/CommonDataModel) in one of these platforms: SQL Server, Oracle, PostgreSQL, IBM Netezza, Apache Impala, Amazon RedShift, or Microsoft APS.
 - R version 3.5.0 or newer
 - On Windows: [RTools](http://cran.r-project.org/bin/windows/Rtools/)
 - [Java](http://java.com)
 - Suggested: 25 GB of free disk space
 
-## How to Run the Study
+### How to Run the Study
 1. In `R`, you will build an `.Renviron` file. An `.Renviron` is an R environment file that sets variables you will be using in your code. It is encouraged to store these inside your environment so that you can protect sensitive information. Below are brief instructions on how to do this:
 
 ````
