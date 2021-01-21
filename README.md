@@ -9,7 +9,7 @@ Covid-19 pandEmic impacts on mental health Related conditions Via multi-database
               **Hao Luo, PhD, University of Hong Kong**
 - Study lead forums tag: **[CarmenOT](https://forums.ohdsi.org/u/carmenot)**, **[HaoLuo]**
 - Study start date: **21st January, 2021**
-- Study end date: **March 2021**
+- Study end date: **15th February 2021**
 - Protocol: **[Word Doc](https://github.com/carmenOT/cervello/blob/main/documents/OHDSI%20Protocol%20COVID%20mental%20health%20V1.4.docx)**
 
 ### Objectives:
