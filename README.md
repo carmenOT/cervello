@@ -98,7 +98,7 @@ Sys.setenv("R_REMOTES_NO_ERRORS_FROM_WARNINGS" = TRUE)
 #install.packages("devtools")
 #devtools::install_github("carmenOT/cervello")
 ````
-
+- Note: if you have issues using devtools, you can still install the package downloading it and then installing it locally.
 
 3.  Now you have set-up your environment and installed the library that will run the package. You can use the following `R` script to load in your library and configure your environment connection details:
 ```
