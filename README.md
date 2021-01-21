@@ -6,13 +6,14 @@ Covid-19 pandEmic impacts on mental health Related conditions Via multi-database
 - Study type: **Clinical Application**
 - Tags: **OHDSI, psychiatryWG, mental-health, covid-19**
 - Study lead: **Carmen Olga Torre, MSc, IQVIA** //
-              **Hao Luo, PhD, University of Hong Kong, Hong Kong**
+              **Hao Luo, PhD, University of Hong Kong**
 - Study lead forums tag: **[CarmenOT](https://forums.ohdsi.org/u/carmenot)**, **[HaoLuo]**
 - Study start date: **21st January, 2021**
 - Study end date: **March 2021**
 - Protocol: **[Word Doc](https://https://github.com/carmenOT/cervello/documents/Protocol.docx)**
 
 **Objectives:**
+
 Describe the baseline demographic, clinical characteristics, treatments and outcomes of interest among individuals with mental health conditions during the COVID-19 pandemic overall and stratified by sex, age, race and specific comorbidities.
 
 ### FAQ
@@ -99,6 +100,83 @@ Sys.setenv("R_REMOTES_NO_ERRORS_FROM_WARNINGS" = TRUE)
 
 *Note: When using this installation method it can be difficult to 'retrace' because you will not see the same folders that you see in the GitHub Repo. If you would prefer to have more visibility into the study contents, you may alternatively download the [TAR file](https://github.com/carmenOT/cervello/archive/master.zip) for this repo and bring this into your `R`/`RStudio` environment. An example of how to call ZIP files into your `R` environment can be found in the [The Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/PopulationLevelEstimation.html#running-the-study-package).*
 
-3. Great work! Now you have set-up your environment and installed the library that will run the package. You can use the following `R` script to load in your library and configure your environment connection details:
+3.  Now you have set-up your environment and installed the library that will run the package. You can use the following `R` script to load in your library and configure your environment connection details:
+```
+library(cervello)
 
+# Optional: specify where the temporary files (used by the ff package) will be created:
+fftempdir <- if (Sys.getenv("FFTEMP_DIR") == "") "~/fftemp" else Sys.getenv("FFTEMP_DIR")
+options(fftempdir = fftempdir)
+
+# Details for connecting to the server:
+dbms = Sys.getenv("DBMS")
+user <- if (Sys.getenv("DB_USER") == "") NULL else Sys.getenv("DB_USER")
+password <- if (Sys.getenv("DB_PASSWORD") == "") NULL else Sys.getenv("DB_PASSWORD")
+server = Sys.getenv("DB_SERVER")
+port = Sys.getenv("DB_PORT")
+connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = dbms,
+                                                                server = server,
+                                                                user = user,
+                                                                password = password,
+                                                                port = port)
+
+
+# Details specific to the database:
+outputFolder <- "s:/cervello/mydb"
+cdmDatabaseSchema <- "CDM_mydb_V1247.dbo"
+cohortDatabaseSchema <- "mydb.dbo"
+cohortTable <- "cervello_mydatabase"
+databaseId <- "mydb"
+databaseName <- "MYDATABASE Medical Claims and Records Database"
+databaseDescription <- " MYDATABASE represent data from individuals enrolled in United States employer-sponsored insurance health plans. The data includes adjudicated health insurance claims (e.g. inpatient, outpatient, and outpatient pharmacy) as well as enrollment data from large employers and health plans who provide private healthcare coverage to employees, their spouses, and dependents." 
+````
+4. You can now run the characterization package. 
+````
+# Use this to run the cohorttDiagnostics. The results will be stored in the diagnosticsExport subfolder of the outputFolder. This can be shared between sites.
+cervello::runCohortDiagnostics(connectionDetails = connectionDetails,
+                                     cdmDatabaseSchema = cdmDatabaseSchema,
+                                     cohortDatabaseSchema = cohortDatabaseSchema,
+                                     cohortTable = cohortTable,
+                                     oracleTempSchema = oracleTempSchema,
+                                     outputFolder = outputFolder,
+                                     databaseId = databaseId,
+                                     databaseName = databaseName,
+                                     databaseDescription = databaseDescription,
+                                     createCohorts = TRUE,
+                                     runInclusionStatistics = TRUE,
+                                     runIncludedSourceConcepts = TRUE,
+                                     runOrphanConcepts = TRUE,
+                                     runTimeDistributions = TRUE,
+                                     runBreakdownIndexEvents = TRUE,
+                                     runIncidenceRates = TRUE,
+                                     runCohortOverlap = TRUE,
+                                     runCohortCharacterization = TRUE,
+                                     runTemporalCohortCharacterization = TRUE,
+                                     minCellCount = 5)
+````
+5. It's now possible to view your results!
+````
+# To view the results:
+# Optional: if there are results zip files from multiple sites in a folder, this merges them, which will speed up starting the viewer:
+CohortDiagnostics::preMergeDiagnosticsFiles(file.path(outputFolder, "diagnosticsExport"))
+
+# Use this to view the results. Multiple zip files can be in the same folder. If the files were pre-merged, this is automatically detected: 
+CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
+````
+
+6. Share the results with the study lead
+
+Send the file ```diagnosticsExport/Results_<DatabaseId>.zip``` in the output folder to the study coordinator [Carmen O. Torre](mailto:carmenolga.torre@iqvia.com)
+
+License
+=======
+The cervello package is licensed under Apache License 2.0
+
+Development
+===========
+cervello was developed in ATLAS and R Studio.
+
+Results
+===========
+Send the file ```diagnosticsExport/Results_<DatabaseId>.zip``` in the output folder to the study coordinator [Carmen O. Torre](mailto:carmenolga.torre@iqvia.com).
 
