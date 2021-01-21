@@ -8,7 +8,7 @@ Covid-19 pandEmic impacts on mental health Related conditions Via multi-database
 - Study lead: **Carmen Olga Torre, MSc, IQVIA** //
               **Hao Luo, PhD, University of Hong Kong, Hong Kong**
 - Study lead forums tag: **[CarmenOT](https://forums.ohdsi.org/u/carmenot)**, **[HaoLuo]**
-- Study start date: **January 21, 2021**
+- Study start date: **21st January, 2021**
 - Study end date: **March 2021**
 - Protocol: **[Word Doc](https://https://github.com/carmenOT/cervello/documents/Protocol.docx)**
 
