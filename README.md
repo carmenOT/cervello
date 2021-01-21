@@ -14,7 +14,7 @@ Covid-19 pandEmic impacts on mental health Related conditions Via multi-database
 
 ### Objectives:
 
-#### Primary analyses: 
+#### Primary analysis: 
 Describe the baseline demographic, clinical characteristics, treatments and outcomes of interest among individuals with mental health conditions during the COVID-19 pandemic overall and stratified by sex, age, race and specific comorbidities.
 
 ### FAQ
