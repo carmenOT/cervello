@@ -12,10 +12,9 @@ Covid-19 pandEmic impacts on mental health Related conditions Via multi-database
 - Study end date: **March 2021**
 - Protocol: **[Word Doc](https://github.com/carmenOT/cervello/blob/main/documents/OHDSI%20Protocol%20COVID%20mental%20health%20V1.4.docx)**
 
-Objectives:
-=================
+### Objectives:
 
-### Primary analyses: 
+## Primary analyses: 
 Describe the baseline demographic, clinical characteristics, treatments and outcomes of interest among individuals with mental health conditions during the COVID-19 pandemic overall and stratified by sex, age, race and specific comorbidities.
 
 ### FAQ
@@ -169,15 +168,15 @@ CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnostic
 
 Send the file ```diagnosticsExport/Results_<DatabaseId>.zip``` in the output folder to the study coordinator [Carmen O. Torre](mailto:carmenolga.torre@iqvia.com)
 
-License
-=======
+### License
+
 The cervello package is licensed under Apache License 2.0
 
-Development
-===========
+### Development
+ 
 cervello was developed in ATLAS and R Studio.
 
-Results
-===========
+### Results
+
 Send the file ```diagnosticsExport/Results_<DatabaseId>.zip``` in the output folder to the study coordinator [Carmen O. Torre](mailto:carmenolga.torre@iqvia.com).
 
